@@ -1,7 +1,42 @@
+@import "./variables";
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+
+  @media only screen and (max-width: $bp-smallest) {
+    font-size: 50%;
+  }
+}
+
 body {
-  background-color: yellowgreen;
-  text-align: center;
+  background: $color-primary;
+
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+
+  color: $color-text-dark;
+  line-height: 1.6;
+  font-size: $text-size-default;
+  -webkit-tap-highlight-color: transparent;
 }
-p {
-  font-size: 3rem;
-}
+// .background {
+//   position: fixed;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   background-image: linear-gradient(
+//     to right bottom,
+//     $color-primary,
+//     $color-primary-dark
+//   );
+// }
