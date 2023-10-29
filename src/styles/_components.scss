@@ -11,6 +11,20 @@
   gap: 1.5rem;
   align-items: center;
 
+  &__container {
+    // width: 100%;
+
+    background-color: $color-primary-light;
+    padding: 1.4rem;
+    padding-bottom: 3.5rem;
+    border-radius: 3px;
+    box-shadow: $box-shadow-md;
+  }
+
+  &__group {
+    width: 90%;
+  }
+
   input,
   textarea {
     display: block;
@@ -19,8 +33,7 @@
     border-radius: 2px;
     border: 1px solid transparent;
     border-bottom: 3px solid transparent;
-    width: 35vw;
-    // min-width: 30rem;
+    width: 100%;
     outline: none;
     position: relative;
     caret-color: $color-accent;

@@ -1,18 +1,7 @@
 @import "./variables";
 
-.container-inner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 40vw;
-
-  background-color: $color-primary-light;
-  padding: 1.4rem;
-  padding-bottom: 3.5rem;
-  border-radius: 3px;
-  box-shadow: $box-shadow-md;
+.container {
+  grid-column: 3 / 7;
 }
 
 .overlay {
