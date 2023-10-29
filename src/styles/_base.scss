@@ -19,10 +19,13 @@ html {
 
 body {
   background-image: linear-gradient(
-    to right bottom,
-    $color-primary,
-    $color-primary-dark
-  );
+      to right bottom,
+      rgba(220, 72, 49, 0.3),
+      rgba(184, 57, 14, 0.3)
+    ),
+    url(../assets/Rays_of_autumn_light_in_Toronto.jpg);
+  background-size: cover;
+  background-position: center;
 
   font-family: "Lato", sans-serif;
   font-weight: 300;

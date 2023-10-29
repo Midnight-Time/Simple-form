@@ -12,9 +12,15 @@
   align-items: center;
 
   &__container {
-    // width: 100%;
-
-    background-color: $color-primary-light;
+    // background-color: $color-primary-light;
+    background-image: linear-gradient(
+      to bottom,
+      rgba($color-primary-light, 0.9) 0%,
+      rgba($color-primary-light, 0.9) 20%,
+      transparent 90%,
+      rgba($color-primary-light, 0.2) 100%
+    );
+    // background-color: transparent;
     padding: 1.4rem;
     padding-bottom: 3.5rem;
     border-radius: 3px;
@@ -39,7 +45,7 @@
     caret-color: $color-accent;
 
     &::-webkit-input-placeholder {
-      opacity: 0.6;
+      opacity: 0.8;
     }
   }
 
@@ -89,6 +95,7 @@
 
   &__group .error-text {
     color: red;
+    background-color: rgba($color-text-light, 0.7);
     line-height: 1;
   }
   &__group .error-text.shown {
