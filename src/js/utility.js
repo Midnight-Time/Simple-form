@@ -1,71 +1,51 @@
 ///////////////////////////////////////
-// FORM VALIDATION
+// PREVENT FROM SCROLLING
+// left: 37, up: 38, right: 39, down: 40,
+// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
 ///////////////////////////////////////
-const allInputs = document.querySelectorAll(".input");
-const formBtn = document.querySelector(".contact__btn");
+const keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
 
-// Show error message under the input
-const showError = function (input, message) {
-  const formControl = input.parentElement;
-  formControl.className = "contact__form__group error";
-  const errorText = formControl.querySelector(".error-text");
-  errorText.className = "error-text shown";
-  errorText.innerText = message;
-};
+function preventDefault(e) {
+  e.preventDefault();
+}
 
-// Hide error message under the input
-const hideError = function (input) {
-  const formControl = input.parentElement;
-  formControl.className = "contact__form__group success";
-  const errorText = formControl.querySelector(".error-text");
-  errorText.className = "error-text hide";
-  errorText.innerText = "";
-};
-
-// State object
-const valObj = {
-  nameEl: false,
-  email: false,
-  message: false,
-};
-// Error message object
-const errorMessageObj = {
-  nameEl: "Please enter your name",
-  email: "Please enter a valid email",
-  message: "Please write me something",
-};
-// Object to send
-const sendlObj = {
-  nameEl: "",
-  email: "",
-  message: "",
-};
-
-// Validation using built-in type attibute
-function validation(input) {
-  if (input.validity.valid) {
-    hideError(input);
-    valObj[input.id] = true;
-    sendlObj[input.id] = input.value;
-  } else {
-    showError(input, `${errorMessageObj[`${input.id}`]}`);
-    valObj[input.id] = false;
+function preventDefaultForScrollKeys(e) {
+  if (keys[e.keyCode]) {
+    preventDefault(e);
+    return false;
   }
 }
 
-// Input validation
-allInputs.forEach((input) => {
-  input.addEventListener("change", function () {
-    validation(input);
-    formisValid(valObj);
-  });
-});
+// modern Chrome requires { passive: false } when adding event
+let supportsPassive = false;
+try {
+  window.addEventListener(
+    "test",
+    null,
+    Object.defineProperty({}, "passive", {
+      get: function () {
+        supportsPassive = true;
+      },
+    })
+  );
+} catch (e) {}
 
-// Enable the button
-function formisValid(someObj) {
-  if (someObj.nameEl && someObj.email && someObj.message) {
-    formBtn.removeAttribute("disabled");
-  } else {
-    formBtn.setAttribute("disabled", true);
-  }
+let wheelOpt = supportsPassive ? { passive: false } : false;
+let wheelEvent =
+  "onwheel" in document.createElement("div") ? "wheel" : "mousewheel";
+
+// call this to Disable
+export function disableScroll() {
+  window.addEventListener("DOMMouseScroll", preventDefault, false); // older FF
+  window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+  window.addEventListener("touchmove", preventDefault, wheelOpt); // mobile
+  window.addEventListener("keydown", preventDefaultForScrollKeys, false);
+}
+
+// call this to Enable
+export function enableScroll() {
+  window.removeEventListener("DOMMouseScroll", preventDefault, false);
+  window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
+  window.removeEventListener("touchmove", preventDefault, wheelOpt);
+  window.removeEventListener("keydown", preventDefaultForScrollKeys, false);
 }
