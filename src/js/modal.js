@@ -1,7 +1,7 @@
 import { enableScroll, disableScroll } from "./utility";
 
 // Show message in modal window
-const showMessage = function (message) {
+function showMessage(message) {
   const errorContainer = document.querySelector(".messageModal");
   const fetchingErrorText = document.querySelector(".messageModal__text");
   const overlay = document.querySelector(".overlay");
@@ -27,6 +27,6 @@ const showMessage = function (message) {
       closeOnClick();
     }
   });
-};
+}
 
 export default showMessage;

@@ -1,6 +1,6 @@
 import showMessage from "./modal";
 
-const sendData = async function (data) {
+async function sendData(data) {
   const response = await fetch(
     "https://my-project-83d90-default-rtdb.firebaseio.com/portfolioForm.json",
     {
@@ -17,6 +17,6 @@ const sendData = async function (data) {
   } else {
     showMessage("Your message was successfully delivered!");
   }
-};
+}
 
 export default sendData;

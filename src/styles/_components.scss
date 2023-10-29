@@ -1,18 +1,17 @@
 @import "./variables";
 
-.header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
 .form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   align-items: center;
 
+  &__heading {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
   &__container {
-    // background-color: $color-primary-light;
     background-image: linear-gradient(
       to bottom,
       rgba($color-primary-light, 0.9) 0%,
@@ -20,7 +19,6 @@
       transparent 90%,
       rgba($color-primary-light, 0.2) 100%
     );
-    // background-color: transparent;
     padding: 1.4rem;
     padding-bottom: 3.5rem;
     border-radius: 3px;
@@ -29,52 +27,27 @@
 
   &__group {
     width: 90%;
-  }
 
-  input,
-  textarea {
-    display: block;
-    font: inherit;
-    padding: 0.5rem 1rem;
-    border-radius: 2px;
-    border: 1px solid transparent;
-    border-bottom: 3px solid transparent;
-    width: 100%;
-    outline: none;
-    position: relative;
-    caret-color: $color-accent;
+    input,
+    textarea {
+      display: block;
+      font: inherit;
+      padding: 0.5rem 1rem;
+      border-radius: 2px;
+      border: 1px solid transparent;
+      border-bottom: 3px solid transparent;
+      width: 100%;
+      outline: none;
+      position: relative;
+      caret-color: $color-accent;
 
-    &::-webkit-input-placeholder {
-      opacity: 0.8;
+      &::-webkit-input-placeholder {
+        opacity: 0.8;
+      }
     }
-  }
 
-  textarea {
-    resize: none;
-  }
-
-  &__button {
-    cursor: pointer;
-    border: none;
-    border-radius: 3px;
-    padding: 1.2rem 2.4rem;
-    background-color: $color-primary;
-    color: $color-text-light;
-    font-size: $text-size-default + 0.1rem;
-    box-shadow: $box-shadow-light;
-    transition: all 0.3s;
-    margin-top: 2rem;
-
-    &:hover:valid {
-      background-color: $color-accent;
-    }
-    &:active {
-      box-shadow: none;
-      transform: translateY(1px);
-    }
-    &:disabled {
-      cursor: not-allowed;
-      background-color: grey;
+    textarea {
+      resize: none;
     }
   }
 
@@ -107,5 +80,30 @@
     height: 0;
     padding: 0;
     transition: all 0.3s;
+  }
+
+  &__button {
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    padding: 1.2rem 2.4rem;
+    background-color: $color-primary;
+    color: $color-text-light;
+    font-size: $text-size-default + 0.1rem;
+    box-shadow: $box-shadow-light;
+    transition: all 0.3s;
+    margin-top: 2rem;
+
+    &:hover:valid {
+      background-color: $color-accent;
+    }
+    &:active {
+      box-shadow: none;
+      transform: translateY(1px);
+    }
+    &:disabled {
+      cursor: not-allowed;
+      background-color: grey;
+    }
   }
 }
